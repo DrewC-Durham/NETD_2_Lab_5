@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Lab_5_Final.Models.Superbowl>
+
+@{
+    ViewData["Title"] = "Superbowl Champions";
+}
+
+<h1>Superbowl Champions</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Year Played
+            </th>
+            <th>
+                Superbowl
+            </th>
+            <th>
+                Champion
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SuperBowlNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Team.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SuperbowlId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SuperbowlId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SuperbowlId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
